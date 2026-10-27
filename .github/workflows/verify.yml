@@ -1,0 +1,22 @@
+name: Verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify DSP and preset formats
+        run: ./script/verify.sh
+      - name: Build universal app
+        run: CONFIGURATION=release UNIVERSAL=1 ./script/build_and_run.sh --build-only
+      - name: Archive unsigned development build
+        run: ditto -c -k --sequesterRsrc --keepParent dist/HeadphoneEQ.app dist/HeadphoneEQ-development.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HeadphoneEQ-development-universal
+          path: dist/HeadphoneEQ-development.zip
+          retention-days: 7

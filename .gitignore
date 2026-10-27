@@ -1,0 +1,10 @@
+.build/
+dist/
+.DS_Store
+*.log
+.codex/
+validation/
+*.keychain-db
+*.p12
+.env
+.env.*

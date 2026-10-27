@@ -1,0 +1,25 @@
+name: Bug report / 问题反馈
+description: Report playback, import or interface issues.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: App version and macOS version
+    validations:
+      required: true
+  - type: input
+    id: output
+    attributes:
+      label: Output device and connection type
+      description: Example HD600 / headphone jack or XM4 / Bluetooth. No serial numbers.
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected behavior and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Optional diagnostic counters or screenshot
+      description: Remove personal paths, device identifiers and track information before sharing. Never attach captured audio or your private preset library by default.
